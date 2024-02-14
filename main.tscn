@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4v3wo47pss2m"]
+
+[ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://billiard_table.tscn" id="1_dfr6j"]
+
+[node name="Main" type="Node3D"]
+
+[node name="BilliardTable" parent="." instance=ExtResource("1_dfr6j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.724752, 0, -0.0221012)
