@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b4v3wo47pss2m"]
 
 [ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://scenes/billiard_table.tscn" id="1_dfr6j"]
-[ext_resource type="ArrayMesh" uid="uid://hbospwn82leh" path="res://assets/ball.res" id="2_npvc1"]
+[ext_resource type="PackedScene" uid="uid://eai613p6pp2s" path="res://scenes/ball.tscn" id="2_2qamn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qfcu8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,8 +31,5 @@ environment = SubResource("Environment_efbxs")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.052336, 0.99863, 0, -0.99863, 0.052336, 0, 0.986929, 0.0646534)
 
-[node name="Ball" type="RigidBody3D" parent="."]
-
-[node name="BallMesh" type="MeshInstance3D" parent="Ball"]
-mesh = ExtResource("2_npvc1")
-skeleton = NodePath("../..")
+[node name="Ball" parent="." instance=ExtResource("2_2qamn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.64294, 0.0520815, 0)
