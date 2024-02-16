@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://crukeg151yeu"]
-
-[ext_resource type="PackedScene" uid="uid://deoi7ygxffurr" path="res://Billiard Table.blend" id="1_imwcp"]
-
-[node name="BilliardTable" instance=ExtResource("1_imwcp")]

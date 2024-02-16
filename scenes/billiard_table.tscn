@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://crukeg151yeu"]
+
+[ext_resource type="PackedScene" uid="uid://deoi7ygxffurr" path="res://assets/Billiard Table.blend" id="1_imwcp"]
+
+[node name="BilliardTable" instance=ExtResource("1_imwcp")]
+
+[node name="Billiard Table_Fabric" parent="." index="0"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Walls" parent="." index="1"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Pocket Gold" parent="." index="2"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Wood" parent="." index="3"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Golds" parent="." index="4"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Legs" parent="." index="5"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Plastic Grids" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="9 Ball" parent="." index="7"]
+visible = false
+
+[node name="8 Ball" parent="." index="8"]
+visible = false
+
+[node name="14 Ball" parent="." index="9"]
+visible = false
+
+[node name="15 Ball" parent="." index="10"]
+visible = false
+
+[node name="3 Ball" parent="." index="11"]
+visible = false
+
+[node name="10 Ball" parent="." index="12"]
+visible = false
+
+[node name="11 Ball" parent="." index="13"]
+visible = false
+
+[node name="5 Ball" parent="." index="14"]
+visible = false
+
+[node name="4 Ball" parent="." index="15"]
+visible = false
+
+[node name="12 Ball" parent="." index="16"]
+visible = false
+
+[node name="7 Ball" parent="." index="17"]
+visible = false
+
+[node name="13 Ball" parent="." index="18"]
+visible = false
+
+[node name="2 Ball" parent="." index="19"]
+visible = false
+
+[node name="6 Ball" parent="." index="20"]
+visible = false
+
+[node name="White" parent="." index="21"]
+visible = false
+
+[node name="1 Ball" parent="." index="22"]
+visible = false
+
+[node name="Cue 1" parent="." index="23"]
+visible = false

@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4v3wo47pss2m"]
+
+[ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://scenes/billiard_table.tscn" id="1_dfr6j"]
+[ext_resource type="ArrayMesh" uid="uid://hbospwn82leh" path="res://assets/ball.res" id="2_npvc1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qfcu8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_qeqjb"]
+sky_material = SubResource("ProceduralSkyMaterial_qfcu8")
+
+[sub_resource type="Environment" id="Environment_efbxs"]
+background_mode = 2
+sky = SubResource("Sky_qeqjb")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, -0.0503027, 0.572915, 0.81807, -0.497467, 0.695892, -0.517939, 53.112, 19.0446, 3.8147e-06)
+shadow_enabled = true
+shadow_bias = 0.05
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_efbxs")
+
+[node name="BilliardTable" parent="." instance=ExtResource("1_dfr6j")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.052336, 0.99863, 0, -0.99863, 0.052336, 0, 0.986929, 0.0646534)
+
+[node name="Ball" type="RigidBody3D" parent="."]
+
+[node name="BallMesh" type="MeshInstance3D" parent="Ball"]
+mesh = ExtResource("2_npvc1")
+skeleton = NodePath("../..")
