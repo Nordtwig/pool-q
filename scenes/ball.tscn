@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://eai613p6pp2s"]
+[gd_scene load_steps=4 format=3 uid="uid://eai613p6pp2s"]
 
 [ext_resource type="ArrayMesh" uid="uid://hbospwn82leh" path="res://assets/ball.res" id="1_kcjoc"]
+[ext_resource type="Script" path="res://scripts/ball.gd" id="1_qitd2"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xne2b"]
 radius = 0.026
 
 [node name="Ball" type="RigidBody3D"]
+script = ExtResource("1_qitd2")
 
 [node name="BallMesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_kcjoc")
