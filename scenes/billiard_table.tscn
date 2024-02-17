@@ -1,86 +1,172 @@
-[gd_scene load_steps=3 format=3 uid="uid://crukeg151yeu"]
+[gd_scene load_steps=6 format=3 uid="uid://crukeg151yeu"]
 
 [ext_resource type="PackedScene" uid="uid://deoi7ygxffurr" path="res://assets/Billiard Table.blend" id="1_imwcp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_i0edy"]
 size = Vector3(2.136, 0.05, 1.059)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4k0jg"]
+bounce = 0.15
+absorbent = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6hv71"]
+size = Vector3(0.129639, 0.54248, 0.9286)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nbu3l"]
+size = Vector3(0.0560303, 0.54248, 0.207891)
+
 [node name="BilliardTable" instance=ExtResource("1_imwcp")]
 
-[node name="Billiard Table_Fabric" parent="." index="0"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Walls" parent="." index="1"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Pocket Gold" parent="." index="2"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Wood" parent="." index="3"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Golds" parent="." index="4"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Legs" parent="." index="5"]
-transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
-
-[node name="Billiard Table_Plastic Grids" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="9 Ball" parent="." index="7"]
-visible = false
-
-[node name="8 Ball" parent="." index="8"]
-visible = false
-
-[node name="14 Ball" parent="." index="9"]
-visible = false
-
-[node name="15 Ball" parent="." index="10"]
-visible = false
-
-[node name="3 Ball" parent="." index="11"]
-visible = false
-
-[node name="10 Ball" parent="." index="12"]
-visible = false
-
-[node name="11 Ball" parent="." index="13"]
-visible = false
-
-[node name="5 Ball" parent="." index="14"]
-visible = false
-
-[node name="4 Ball" parent="." index="15"]
-visible = false
-
-[node name="12 Ball" parent="." index="16"]
-visible = false
-
-[node name="7 Ball" parent="." index="17"]
-visible = false
-
-[node name="13 Ball" parent="." index="18"]
-visible = false
-
-[node name="2 Ball" parent="." index="19"]
-visible = false
-
-[node name="6 Ball" parent="." index="20"]
-visible = false
-
-[node name="White" parent="." index="21"]
-visible = false
-
-[node name="1 Ball" parent="." index="22"]
-visible = false
-
-[node name="Cue 1" parent="." index="23"]
-visible = false
-
-[node name="TableSurface" type="StaticBody3D" parent="." index="24"]
+[node name="TableSurface" type="StaticBody3D" parent="." index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TableSurface" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00122452, -0.0238647, 0.0012207)
 shape = SubResource("BoxShape3D_i0edy")
+
+[node name="Walls" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0790517, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_4k0jg")
+
+[node name="ShortWallCollisionShape" type="CollisionShape3D" parent="Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07018, 0.22876, 0.00281334)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="ShortWallCollisionShape7" type="CollisionShape3D" parent="Walls" index="1"]
+transform = Transform3D(0.873908, 0, 0.486091, 0, 1, 0, -0.486091, 0, 0.873908, 0.0164165, 0.22876, 0.653126)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape8" type="CollisionShape3D" parent="Walls" index="2"]
+transform = Transform3D(0.872743, 0, -0.48818, 0, 1, 0, 0.48818, 0, 0.872743, 0.141259, 0.22876, 0.653126)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape9" type="CollisionShape3D" parent="Walls" index="3"]
+transform = Transform3D(-0.875194, 0, -0.483771, 0, 1, 0, 0.483771, 0, -0.875194, 0.140163, 0.22876, -0.650506)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape10" type="CollisionShape3D" parent="Walls" index="4"]
+transform = Transform3D(-0.871445, 0, 0.490493, 0, 1, 0, -0.490493, 0, -0.871445, 0.0153216, 0.22876, -0.650837)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape11" type="CollisionShape3D" parent="Walls" index="5"]
+transform = Transform3D(0.662672, 0, 0.748909, 0, 1, 0, -0.748909, 0, 0.662672, -0.98319, 0.22876, -0.634658)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape12" type="CollisionShape3D" parent="Walls" index="6"]
+transform = Transform3D(0.662672, 0, 0.748909, 0, 1, 0, -0.748909, 0, 0.662672, -1.10034, 0.22876, -0.509107)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape13" type="CollisionShape3D" parent="Walls" index="7"]
+transform = Transform3D(-0.743868, 0, 0.668326, 0, 1, 0, -0.668326, 0, -0.743868, -1.0967, 0.22876, 0.524508)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape14" type="CollisionShape3D" parent="Walls" index="8"]
+transform = Transform3D(-0.743868, 0, 0.668326, 0, 1, 0, -0.668326, 0, -0.743868, -0.972044, 0.22876, 0.642607)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape15" type="CollisionShape3D" parent="Walls" index="9"]
+transform = Transform3D(-0.646404, 0, -0.762996, 0, 1, 0, 0.762996, 0, -0.646404, 1.1493, 0.22876, 0.636188)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape16" type="CollisionShape3D" parent="Walls" index="10"]
+transform = Transform3D(-0.646404, 0, -0.762996, 0, 1, 0, 0.762996, 0, -0.646404, 1.26372, 0.22876, 0.508145)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape17" type="CollisionShape3D" parent="Walls" index="11"]
+transform = Transform3D(0.720745, 0, -0.693201, 0, 1, 0, 0.693201, 0, 0.720745, 1.2587, 0.22876, -0.515278)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape18" type="CollisionShape3D" parent="Walls" index="12"]
+transform = Transform3D(0.720745, 0, -0.693201, 0, 1, 0, 0.693201, 0, 0.720745, 1.13812, 0.22876, -0.637541)
+shape = SubResource("BoxShape3D_nbu3l")
+
+[node name="ShortWallCollisionShape3" type="CollisionShape3D" parent="Walls" index="13"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.466972, 0.22876, -0.610293)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="ShortWallCollisionShape4" type="CollisionShape3D" parent="Walls" index="14"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.625315, 0.22876, -0.610293)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="ShortWallCollisionShape5" type="CollisionShape3D" parent="Walls" index="15"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.466972, 0.22876, 0.612028)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="ShortWallCollisionShape6" type="CollisionShape3D" parent="Walls" index="16"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.625315, 0.22876, 0.612028)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="ShortWallCollisionShape2" type="CollisionShape3D" parent="Walls" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23025, 0.22876, 0.00242615)
+shape = SubResource("BoxShape3D_6hv71")
+
+[node name="Billiard Table_Fabric" parent="." index="2"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Walls" parent="." index="3"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Pocket Gold" parent="." index="4"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Wood" parent="." index="5"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Golds" parent="." index="6"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Legs" parent="." index="7"]
+transform = Transform3D(1.34099, 0, 0, 0, 1.34099, 0, 0, 0, 1.34099, 0, 0, 0)
+
+[node name="Billiard Table_Plastic Grids" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="9 Ball" parent="." index="9"]
+visible = false
+
+[node name="8 Ball" parent="." index="10"]
+visible = false
+
+[node name="14 Ball" parent="." index="11"]
+visible = false
+
+[node name="15 Ball" parent="." index="12"]
+visible = false
+
+[node name="3 Ball" parent="." index="13"]
+visible = false
+
+[node name="10 Ball" parent="." index="14"]
+visible = false
+
+[node name="11 Ball" parent="." index="15"]
+visible = false
+
+[node name="5 Ball" parent="." index="16"]
+visible = false
+
+[node name="4 Ball" parent="." index="17"]
+visible = false
+
+[node name="12 Ball" parent="." index="18"]
+visible = false
+
+[node name="7 Ball" parent="." index="19"]
+visible = false
+
+[node name="13 Ball" parent="." index="20"]
+visible = false
+
+[node name="2 Ball" parent="." index="21"]
+visible = false
+
+[node name="6 Ball" parent="." index="22"]
+visible = false
+
+[node name="White" parent="." index="23"]
+visible = false
+
+[node name="1 Ball" parent="." index="24"]
+visible = false
+
+[node name="Cue 1" parent="." index="25"]
+visible = false
