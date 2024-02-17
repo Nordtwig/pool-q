@@ -1,11 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4v3wo47pss2m"]
+[gd_scene load_steps=31 format=3 uid="uid://b4v3wo47pss2m"]
 
 [ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://scenes/billiard_table.tscn" id="1_dfr6j"]
+[ext_resource type="Script" path="res://scenes/ball_handler.gd" id="1_hghoi"]
 [ext_resource type="PackedScene" uid="uid://eai613p6pp2s" path="res://scenes/ball.tscn" id="2_2qamn"]
+[ext_resource type="Texture2D" uid="uid://b6kpdd4aapt2h" path="res://assets/textures/16072.jpg" id="2_frey5"]
 [ext_resource type="Script" path="res://scripts/overhead_cam.gd" id="2_uu83m"]
+[ext_resource type="Texture2D" uid="uid://cnbfgdi3lu38o" path="res://assets/textures/16073.jpg" id="3_44tq0"]
 [ext_resource type="Texture2D" uid="uid://mvgia0j5ur50" path="res://assets/textures/16074.jpg" id="3_trlfg"]
 [ext_resource type="Script" path="res://scripts/play_system.gd" id="4_qabir"]
+[ext_resource type="Texture2D" uid="uid://dgyxcwxyy2wtl" path="res://assets/textures/16075.jpg" id="5_4kiaa"]
 [ext_resource type="ArrayMesh" uid="uid://by4eqrxfjtpp1" path="res://assets/cue.res" id="5_ydkxf"]
+[ext_resource type="Texture2D" uid="uid://hwuiktrqg4l1" path="res://assets/textures/16076.jpg" id="6_c6khj"]
+[ext_resource type="Script" path="res://scripts/ball_Rack.gd" id="6_e2fow"]
+[ext_resource type="Texture2D" uid="uid://giof2koa7ma6" path="res://assets/textures/16077.jpg" id="7_5wt0y"]
+[ext_resource type="Texture2D" uid="uid://ee0gqr8ew8pw" path="res://assets/textures/16078.jpg" id="8_5qmut"]
+[ext_resource type="Texture2D" uid="uid://cldpj6tsfpxij" path="res://assets/textures/16079.jpg" id="9_ackpp"]
+[ext_resource type="Texture2D" uid="uid://cxid5nf2is5db" path="res://assets/textures/16080.jpg" id="10_7euxa"]
+[ext_resource type="Texture2D" uid="uid://cm30babomoqrn" path="res://assets/textures/16081.jpg" id="11_6th78"]
+[ext_resource type="Texture2D" uid="uid://doot7pdtdyuwq" path="res://assets/textures/16082.jpg" id="12_27voh"]
+[ext_resource type="Texture2D" uid="uid://d006yog41a7rl" path="res://assets/textures/16083.jpg" id="13_mqy46"]
+[ext_resource type="Texture2D" uid="uid://b57fdyxlya47x" path="res://assets/textures/16084.jpg" id="14_xnq5u"]
+[ext_resource type="Texture2D" uid="uid://6ohha0cp2bkg" path="res://assets/textures/16085.jpg" id="15_etnnt"]
+[ext_resource type="Texture2D" uid="uid://cdmtpp64ilbyn" path="res://assets/textures/16086.jpg" id="16_gcrui"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qfcu8"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -59,7 +75,19 @@ _data = {
 "shoot_stick": SubResource("Animation_hib1y")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sux37"]
+albedo_color = Color(0.239216, 0.0392157, 0.0392157, 1)
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gj0v4"]
+material = SubResource("StandardMaterial3D_sux37")
+size = Vector2(10, 10)
+
 [node name="Main" type="Node3D"]
+
+[node name="BallHandler" type="Node" parent="."]
+script = ExtResource("1_hghoi")
+texture_library = Array[Texture]([ExtResource("2_frey5"), ExtResource("3_44tq0"), ExtResource("3_trlfg"), ExtResource("5_4kiaa"), ExtResource("6_c6khj"), ExtResource("7_5wt0y"), ExtResource("8_5qmut"), ExtResource("9_ackpp"), ExtResource("10_7euxa"), ExtResource("11_6th78"), ExtResource("12_27voh"), ExtResource("13_mqy46"), ExtResource("14_xnq5u"), ExtResource("15_etnnt"), ExtResource("16_gcrui")])
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, -0.0503027, 0.572915, 0.81807, -0.497467, 0.695892, -0.517939, 53.112, 19.0446, 3.8147e-06)
@@ -76,10 +104,6 @@ transform = Transform3D(1, 0, 0, 0, 0.052336, 0.99863, 0, -0.99863, 0.052336, 0,
 visible = false
 script = ExtResource("2_uu83m")
 
-[node name="Ball2" parent="." instance=ExtResource("2_2qamn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122623, 0.0520815, -0.353342)
-_texture = ExtResource("3_trlfg")
-
 [node name="PlaySystem" type="Node3D" parent="." node_paths=PackedStringArray("_cue_ball", "_aim_container", "_cue_stick", "_stick_animation_player")]
 script = ExtResource("4_qabir")
 _cue_ball = NodePath("CueBall")
@@ -88,7 +112,7 @@ _cue_stick = NodePath("AimContainer/CueStickContainer/CueStick")
 _stick_animation_player = NodePath("StickAnimationPlayer")
 
 [node name="CueBall" parent="PlaySystem" instance=ExtResource("2_2qamn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0283424, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.760889, 0.0283424, 0)
 
 [node name="AimContainer" type="Node3D" parent="PlaySystem"]
 transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0)
@@ -114,3 +138,12 @@ skeleton = NodePath("../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_laymr")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.656611, 0)
+mesh = SubResource("PlaneMesh_gj0v4")
+
+[node name="BallRack" type="Node3D" parent="." node_paths=PackedStringArray("_ball_handler")]
+script = ExtResource("6_e2fow")
+_ball_scene = ExtResource("2_2qamn")
+_ball_handler = NodePath("../BallHandler")

@@ -9,14 +9,14 @@ extends Node3D
 @export var _stick_min_z: float = -0.005
 @export var _stick_max_z: float = 0.5
 @export var _shot_power_min: float = 0.1
-@export var _shot_power_max: float = 4.0
+@export var _shot_power_max: float = 5.0
 
 var _shot_percent: float = 0.0
 
 
 func _ready() -> void:
     # Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-    pass
+    _cue_ball.position = BilliardTable.HEAD_SPOT
 
 
 func _process(_delta) -> void:
