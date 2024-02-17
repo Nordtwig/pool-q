@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4v3wo47pss2m"]
+[gd_scene load_steps=12 format=3 uid="uid://b4v3wo47pss2m"]
 
 [ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://scenes/billiard_table.tscn" id="1_dfr6j"]
 [ext_resource type="PackedScene" uid="uid://eai613p6pp2s" path="res://scenes/ball.tscn" id="2_2qamn"]
@@ -19,8 +19,56 @@ sky = SubResource("Sky_qeqjb")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jkcvo"]
-radius = 0.296194
+[sub_resource type="Animation" id="Animation_hib1y"]
+resource_name = "shoot_stick"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimContainer/CueStickContainer/CueStick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.2), Vector3(0, 0, -0.01)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.35),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_strike_ball"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q4x6e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AimContainer/CueStickContainer/CueStick:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_laymr"]
+_data = {
+"RESET": SubResource("Animation_q4x6e"),
+"shoot_stick": SubResource("Animation_hib1y")
+}
 
 [node name="Main" type="Node3D"]
 
@@ -42,31 +90,36 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122623, 0.0520815, -0.353342)
 _texture = ExtResource("3_trlfg")
 
-[node name="PlaySystem" type="Node3D" parent="." node_paths=PackedStringArray("_cue_ball", "_aim_container")]
+[node name="PlaySystem" type="Node3D" parent="." node_paths=PackedStringArray("_cue_ball", "_aim_container", "_cue_stick", "_stick_animation_player")]
 script = ExtResource("4_qabir")
 _cue_ball = NodePath("CueBall")
 _aim_container = NodePath("AimContainer")
+_cue_stick = NodePath("AimContainer/CueStickContainer/CueStick")
+_stick_animation_player = NodePath("StickAnimationPlayer")
 
 [node name="CueBall" parent="PlaySystem" instance=ExtResource("2_2qamn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0481997, 0)
-_texture = ExtResource("3_trlfg")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0283424, 0)
 
 [node name="AimContainer" type="Node3D" parent="PlaySystem"]
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0)
 
 [node name="AimCam" type="Camera3D" parent="PlaySystem/AimContainer"]
 transform = Transform3D(1, 0, 0, 0, 0.993286, 0.115683, 0, -0.115683, 0.993286, 0, 0.251709, 0.941844)
 current = true
 fov = 60.0
 
-[node name="CueStick" type="Node3D" parent="PlaySystem/AimContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0532442, 0.809455)
+[node name="CueStickContainer" type="Node3D" parent="PlaySystem/AimContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00373499, 0.0227681, 0.789892)
+
+[node name="CueStick" type="Node3D" parent="PlaySystem/AimContainer/CueStickContainer"]
 metadata/_edit_group_ = true
 
-[node name="CueMesh" type="MeshInstance3D" parent="PlaySystem/AimContainer/CueStick"]
+[node name="CueMesh" type="MeshInstance3D" parent="PlaySystem/AimContainer/CueStickContainer/CueStick"]
 transform = Transform3D(0.999925, 0.0121989, 0.000660676, -4.72772e-09, -0.0540789, 0.998537, 0.0122168, -0.998462, -0.0540748, 0, 0, 0)
 mesh = ExtResource("5_ydkxf")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaySystem/AimContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.158863, 0, 1.17063)
-shape = SubResource("CapsuleShape3D_jkcvo")
+[node name="StickAnimationPlayer" type="AnimationPlayer" parent="PlaySystem"]
+libraries = {
+"": SubResource("AnimationLibrary_laymr")
+}
