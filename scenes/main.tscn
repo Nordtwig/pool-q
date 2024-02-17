@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://b4v3wo47pss2m"]
+[gd_scene load_steps=13 format=3 uid="uid://b4v3wo47pss2m"]
 
 [ext_resource type="PackedScene" uid="uid://crukeg151yeu" path="res://scenes/billiard_table.tscn" id="1_dfr6j"]
 [ext_resource type="PackedScene" uid="uid://eai613p6pp2s" path="res://scenes/ball.tscn" id="2_2qamn"]
+[ext_resource type="Script" path="res://scripts/overhead_cam.gd" id="2_uu83m"]
 [ext_resource type="Texture2D" uid="uid://mvgia0j5ur50" path="res://assets/textures/16074.jpg" id="3_trlfg"]
 [ext_resource type="Script" path="res://scripts/play_system.gd" id="4_qabir"]
 [ext_resource type="ArrayMesh" uid="uid://by4eqrxfjtpp1" path="res://assets/cue.res" id="5_ydkxf"]
@@ -29,10 +30,10 @@ tracks/0/path = NodePath("AimContainer/CueStickContainer/CueStick:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.2), Vector3(0, 0, -0.01)]
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector3(0, 0, -0.01)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -41,7 +42,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.35),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -51,18 +52,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_q4x6e"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AimContainer/CueStickContainer/CueStick:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_laymr"]
 _data = {
@@ -85,6 +74,7 @@ environment = SubResource("Environment_efbxs")
 [node name="OverheadCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.052336, 0.99863, 0, -0.99863, 0.052336, 0, 0.986929, 0.0646534)
 visible = false
+script = ExtResource("2_uu83m")
 
 [node name="Ball2" parent="." instance=ExtResource("2_2qamn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0122623, 0.0520815, -0.353342)
@@ -109,9 +99,10 @@ current = true
 fov = 60.0
 
 [node name="CueStickContainer" type="Node3D" parent="PlaySystem/AimContainer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00373499, 0.0227681, 0.789892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00373499, 0.0142999, 0.789892)
 
 [node name="CueStick" type="Node3D" parent="PlaySystem/AimContainer/CueStickContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.01)
 metadata/_edit_group_ = true
 
 [node name="CueMesh" type="MeshInstance3D" parent="PlaySystem/AimContainer/CueStickContainer/CueStick"]

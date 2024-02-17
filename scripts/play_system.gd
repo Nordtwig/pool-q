@@ -38,5 +38,6 @@ func _handle_shot_input():
 # executed by "shoot_stick" animation in _handle_shot_input
 func _strike_ball():
     var stick_direction = -_aim_container.basis.z
-    _cue_stick.visible = false
     _cue_ball.apply_central_impulse(stick_direction)
+    _cue_stick.visible = false
+    GameEvents.cue_ball_hit.emit()
